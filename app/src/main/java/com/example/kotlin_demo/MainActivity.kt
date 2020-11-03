@@ -9,14 +9,23 @@ import androidx.annotation.IdRes
 
 class MainActivity : AppCompatActivity() {
   private var btn1:View ?= null
+  private var scene:CoroutineScne ?= null
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
+    scene = CoroutineScne()
 
     btn1 = findViewById<View>(R.id.btn1)
     btn1?.testClick {
       Toast.makeText(this,"测试",Toast.LENGTH_SHORT).show()
+    }
+
+    findViewById<View>(R.id.btn2).setOnClickListener {
+      scene?.startScene2()
+    }
+    findViewById<View>(R.id.btn3).setOnClickListener {
+      scene?.startScene3()
     }
 //    R.id.btn1.onClick<View>(this){
 //      Toast.makeText(this,"测试",Toast.LENGTH_SHORT).show()
